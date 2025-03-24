@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react"
+import { useState, Fragment, useEffect } from "react"
 import Title from "../../component/title"
 import Grid from "../../component/grid"
 import Box from "../../component/box"
@@ -34,7 +34,7 @@ export default function Container() {
     }
   }
   const convertData = (raw) => ({
-    list: raw.list.reverse().map(({id, username, text, date}) => ({
+    list: [...raw.list || []].reverse().map(({id, username, text, date}) => ({
       id,
       username,
       text,
@@ -43,9 +43,9 @@ export default function Container() {
     isEmpty: raw.list.length === 0
   })
 
-  if(status === null) {
+  useEffect(() => {
     getData()
-  }
+  }, [])
 
   return (
     <Grid>
