@@ -1,7 +1,8 @@
 import "./index.css"
+import {memo} from 'react'
 import Grid from "../../component/grid"
 
-export default function Container({username, text, date}) {
+function Container({username, text, date}) {
   
   return (
     <Grid>
@@ -13,3 +14,5 @@ export default function Container({username, text, date}) {
     </Grid>
   )
 }
+
+export default memo(Container)

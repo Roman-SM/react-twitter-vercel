@@ -1,4 +1,4 @@
-import { useState, Fragment, useEffect, useReducer } from "react"
+import { useState, Fragment, useEffect, useReducer, useCallback } from "react"
 import { requestInitialState, requestReducer, REQUEST_ACTION_TYPE } from "../../util/request"
 import Grid from "../../component/grid"
 import Box from "../../component/box"
@@ -10,7 +10,7 @@ import { Skeleton, Alert,  } from "../../component/load"
 export default function Container({id, username, text, date}) {
   const [state, dispatch] = useReducer(requestReducer, requestInitialState, (state) => ({...state, data: {id, username, text, date, reply: null}}))
 
-  const getData = async () => {
+  const getData = useCallback( async () => {
     dispatch(REQUEST_ACTION_TYPE.PROGRESS)
     try {
       // метод method: "GET" іде за замовчуванням і його можна не вказувати
@@ -26,7 +26,7 @@ export default function Container({id, username, text, date}) {
     } catch (error) {
       dispatch({type: REQUEST_ACTION_TYPE.ERROR, payload: error.message})
     }
-  }
+  }, [state.data.id])
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -51,7 +51,7 @@ export default function Container({id, username, text, date}) {
 
   useEffect(() => {
     if (isOpen === true) getData()
-  }, [isOpen])
+  }, [isOpen, getData])
   
   return (
     <Box style={{padding: "0"}}>

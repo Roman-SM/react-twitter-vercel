@@ -2,6 +2,7 @@ import React from "react";
 import Page from "./component/page"
 import PostList from "./container/post-list"
 
+
 function App() {
   return (
     <Page>
@@ -9,6 +10,188 @@ function App() {
     </Page>
   )
 }
+
+// import { lazy, useEffect, useState, Suspense } from "react";
+
+// const Child = lazy (() => import("./Child"))
+
+// function App() {
+//   const [value, setValue] = useState(0)
+
+//   useEffect(() => {
+//     const id = setInterval(() => setValue((prev) => prev + 1), 1000)
+//     return () => clearInterval(id)
+//   })
+//     return (
+//       <Page>
+//         <div>State: {value}</div>
+//         <div>
+//           {value > 5 && 
+//             <Suspense fallback={<div>Loading...</div>}>
+//               <Child value={value}/>
+//             </Suspense>
+//           }
+//         </div>
+//       </Page>
+//     )
+// }
+  
+// import {useMemo, useCallback} from 'react'
+
+// function Child ({state}) {
+//   const data = useMemo(() => { return state * 10}, [state])
+//   return (
+//     <div>Child {data}</div>
+//   )
+// }
+
+// function Child2 ({state}) {
+//   const handleClick = useCallback(() => alert(state), [state])
+
+//   useEffect(() => console.log('new handleClick'), [handleClick])
+//   return <div onClick={handleClick}>Child2</div>
+// }
+
+// function App() {
+//   const [state, setState] = useState(0)
+//   const [state2, setState2] = useState(0)
+
+//   useEffect(() => {
+//     const id = setInterval(() => setState((prev) => prev + 1), 1000)
+//     const id2 = setInterval(() => setState2((prev) => prev + 1), 5000)
+
+//     return () => {
+//       clearInterval(id)
+//       clearInterval(id2)
+//     }
+//   }, [])
+
+
+//   return (
+//     <Page>
+//       Hello World {state} 
+//       <Child state={state2}/>
+//       <Child2 state={state2}/>
+//     </Page>
+//   )
+
+// }
+
+// import {useRef, useEffect} from 'react'
+
+// function App() {
+//   const scrollPositionRef = useRef(0)
+
+//   const handleScroll = () => {
+//     scrollPositionRef.current = window.scrollY
+//   }
+//   useEffect(() => {
+//     window.addEventListener("scroll", handleScroll)
+//     return () => window.removeEventListener("scroll", handleScroll)
+//   }, [])
+
+//   useEffect(() => {
+//     console.log("scrollPositionRef", scrollPositionRef)
+//   }, [scrollPositionRef.current])
+
+//   return (
+//     <Page>
+//       <button onClick={handleScroll}>Click</button>
+//       <p style={{height: 10000}}></p>
+//     </Page>
+//   )
+// }
+
+// import Grid from "./component/grid"
+// import Box from "./component/box"
+
+// function App() {
+//   const prevValueRef = useRef(null)
+
+//   const [value, setValue] = useState(0)
+
+//   useEffect (() => {
+//     prevValueRef.current = value
+
+//   }, [value])
+
+//   const handleIncrement = () => {
+//     setValue(value + 1)
+//   }
+
+//   return (
+//     <Page>
+//       <Grid>
+//         <Box>
+//           <p>Value: {value}</p>
+//           <p>PrevValueRef: {prevValueRef.current}</p>
+//         </Box>
+//         <Box>
+//           <button onClick={handleIncrement}>Increment</button>
+//         </Box>
+//       </Grid>
+//     </Page>
+//   )
+// }
+
+// function App() {
+//   const inputRef = useRef(null)
+//   useEffect (() => {
+//     if(inputRef && inputRef.current) inputRef.current.focus()
+//   }, [])
+//   return (
+//     <Page>
+//       <Grid>
+//         <Box>
+//           <input ref={inputRef} placeholder="Введіть пошту..."/>
+//         </Box>
+//         <Box>
+//           <input placeholder="Введіть пароль..."/>
+//         </Box>
+//       </Grid>
+//     </Page>
+//   )
+// }
+
+// function App() {
+//   const fistCatRef = useRef(null)
+//   const secondCatRef = useRef(null)
+//   const lastCatRef = useRef(null)
+
+//   function handleScrollBy(ref) {
+//     console.log(ref)
+//     if(ref && ref.current) {
+//       const offsetTop = ref.current.offsetTop
+//       window.scrollBy({
+//         top: offsetTop,
+//         behavior: "smooth"
+//       })
+//     }
+//   }
+  
+//   return (
+//     <Page>
+//       <Grid>
+//         <button onClick={() => handleScrollBy(fistCatRef)}>Cat 1</button>
+//         <button onClick={() => handleScrollBy(secondCatRef)}>Cat 2</button>
+//         <button onClick={() => handleScrollBy(lastCatRef)}>Cat 3</button>
+//       </Grid>
+//       <div>
+//         <ul style={{display: 'grid', gap: '500px', marginBottom: '500px'}}>
+//           <li>
+//             <img src="https://placecats.com/g/200/200" alt="Cat 1" ref={fistCatRef}/>
+//           </li>
+//           <li>
+//             <img src="https://placecats.com/g/200/200" alt="Cat 2" ref={secondCatRef}/>
+//           </li>
+//           <li>
+//             <img src="https://placecats.com/g/200/200" alt="Cat 3" ref={lastCatRef}/>
+//           </li>
+//         </ul>
+//       </div>
+//     </Page>
+//   )
+// }
 
 // import Grid from "./component/grid"
 // import Box from "./component/box"
