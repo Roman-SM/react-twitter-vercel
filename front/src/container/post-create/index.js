@@ -1,19 +1,20 @@
 import "./index.css"
 import FieldForm from "../../component/field-form"
 import Grid from "../../component/grid"
-import { useState } from "react"
+import { useState, useReducer } from "react"
 import {Alert, Loader, LOAD_STATUS} from "../../component/load"
+import { requestInitialState, requestReducer, REQUEST_ACTION_TYPE } from "../../util/request"
 
 export default function Container({onCreate, placeholder, button, id = null}) {
-  const [status, setStatus] = useState(null)
-  const [message, setMessage] = useState("")
+  const [state, dispatch] = useReducer(requestReducer, requestInitialState)
   
   const handleSubmit = (value) => {
     return sendData({value})
   }
 
   const sendData = async (dataToSend) => {
-    setStatus(LOAD_STATUS.PROGRESS)
+    dispatch({type: REQUEST_ACTION_TYPE.PROGRESS})
+
     try {
       const res = await fetch("http://localhost:4000/post-create", {
         method: "POST",
@@ -23,15 +24,13 @@ export default function Container({onCreate, placeholder, button, id = null}) {
       const data = await res.json()
 
       if(res.ok) {
-        setStatus(null)
+        dispatch({type: REQUEST_ACTION_TYPE.RESET})
         if(onCreate) onCreate()
       } else {
-        setMessage(data.message)
-        setStatus(LOAD_STATUS.ERROR)
+        dispatch({type: REQUEST_ACTION_TYPE.ERROR, message: data.message})
       }
     } catch (error) {
-      setMessage(error.message)
-      setStatus(LOAD_STATUS.ERROR)
+      dispatch({type: REQUEST_ACTION_TYPE.ERROR, message: error.message})
     }
   }
   const convertData = ({value}) => 
@@ -48,10 +47,10 @@ export default function Container({onCreate, placeholder, button, id = null}) {
           button={button}
           onSubmit={handleSubmit}
         />
-        {status === LOAD_STATUS.ERROR && (
-          <Alert status={status} message={message}/>
+        {state.status === REQUEST_ACTION_TYPE.ERROR && (
+          <Alert status={state.status} message={state.message}/>
         )}
-        {status === LOAD_STATUS.PROGRESS && <Loader/>}
+        {state.status === REQUEST_ACTION_TYPE.PROGRESS && <Loader/>}
     </Grid>
   )
 }
