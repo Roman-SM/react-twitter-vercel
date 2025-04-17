@@ -7,7 +7,7 @@ import {
   requestInitialState,
   requestReducer,
   REQUEST_ACTION_TYPE,
-} from "../../../util/request";
+} from "../../util/request";
 
 function Container({ onCreate, placeholder, button, id = null }) {
   const [state, dispatch] = useReducer(requestReducer, requestInitialState);
