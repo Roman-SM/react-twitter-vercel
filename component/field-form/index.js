@@ -19,10 +19,10 @@ function Component({ placeholder, button, onSubmit }) {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      // Перевірка на натискання клавіші Enter
-      e.preventDefault(); // Запобігаємо додатковому переходу на новий рядок у textarea
-      handleSubmit(); // Відправляємо дані, як при натисканні кнопки
+    // Перевірка на натискання Command (Mac) або Ctrl (Windows/Linux) + Enter
+    if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault(); // Запобігаємо переходу на новий рядок
+      handleSubmit(); // Відправляємо дані при натисканні Command/Ctrl + Enter
     }
   };
 
