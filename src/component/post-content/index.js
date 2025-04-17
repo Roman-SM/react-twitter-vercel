@@ -1,9 +1,8 @@
-import "./index.css"
-import {memo} from 'react'
-import Grid from "../../component/grid"
+import "./index.css";
+import { memo } from "react";
+import Grid from "../grid";
 
-function Container({username, text, date}) {
-  
+function Container({ username, text, date }) {
   return (
     <Grid>
       <div className="post-content">
@@ -12,7 +11,7 @@ function Container({username, text, date}) {
       </div>
       <p className="post-content__text">{text}</p>
     </Grid>
-  )
+  );
 }
 
-export default memo(Container)
+export default memo(Container);

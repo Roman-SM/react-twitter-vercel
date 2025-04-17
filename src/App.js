@@ -1,13 +1,12 @@
-import Page from "./component/page"
-import PostList from "./container/post-list"
-
+import Page from "./component/page";
+import PostList from "./container/post-list";
 
 function App() {
   return (
     <Page>
-      <PostList/>
+      <PostList />
     </Page>
-  )
+  );
 }
 
 // import { useMemo,  useState, createContext, } from "react";
@@ -34,8 +33,8 @@ function App() {
 // function App() {
 //   const [currentTheme, dispatch] = useReducer(themeReducer, THEME_TYPE.LIGHT)
 
-//   const theme = useMemo (() => ({ 
-//     value: currentTheme, 
+//   const theme = useMemo (() => ({
+//     value: currentTheme,
 //     toggle: () => dispatch({type: THEME_ACTION_TYPE.TOGGLE})
 //   }), [currentTheme])
 
@@ -63,7 +62,7 @@ function App() {
 //       <Page>
 //         <div>State: {value}</div>
 //         <div>
-//           {value > 5 && 
+//           {value > 5 &&
 //             <Suspense fallback={<div>Loading...</div>}>
 //               <Child value={value}/>
 //             </Suspense>
@@ -72,7 +71,7 @@ function App() {
 //       </Page>
 //     )
 // }
-  
+
 // import {useMemo, useCallback} from 'react'
 
 // function Child ({state}) {
@@ -103,10 +102,9 @@ function App() {
 //     }
 //   }, [])
 
-
 //   return (
 //     <Page>
-//       Hello World {state} 
+//       Hello World {state}
 //       <Child state={state2}/>
 //       <Child2 state={state2}/>
 //     </Page>
@@ -205,7 +203,7 @@ function App() {
 //       })
 //     }
 //   }
-  
+
 //   return (
 //     <Page>
 //       <Grid>
@@ -247,14 +245,14 @@ function App() {
 //       const id =  new Date().getTime()
 //       const newItem = {value: action.payload, id}
 //       return {...state, items: [...state.items, newItem]}
-    
+
 //     case LIST_ACTION_TYPE.DELETE:
 //       const newItems = state.items.filter((item) => item.id !== action.payload)
 //       return {...state, items: newItems}
-    
+
 //     case LIST_ACTION_TYPE.SELECT:
 //       return {...state, selectedId: action.payload === state.selectedId ? null : action.payload}
-      
+
 //     case LIST_ACTION_TYPE.REVERCE:
 //       return {...state, items: state.items.reverse()}
 
@@ -328,7 +326,7 @@ function App() {
 //         (position) => {
 //           const {latitude, longitude} = position.coords;
 //           setLocation({latitude, longitude})
-//         }, 
+//         },
 //         (error) => {
 //           console.error("Помилка отримання геолокації:", error.message)
 //         }
@@ -337,7 +335,6 @@ function App() {
 //       console.error("Геолокація не підтримується в браузері.")
 //     }
 //   }, [])
-
 
 //   return (
 //     <Page>
