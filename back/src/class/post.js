@@ -9,10 +9,10 @@ class Post {
     this.date = new Date().getTime()
     this.reply = []
   }
-  static create (username, text, post) {
+  static create(username, text, post) {
     const newPost = new Post(username, text)
 
-    if(post) {
+    if (post) {
       post.reply.push(newPost)
       console.log(post)
     } else {
@@ -21,11 +21,12 @@ class Post {
     console.log(this.#list)
     return newPost
   }
-  static getById (id) {
-    return this.#list.find((item) => item.id === Number(id)) || null;
+  static getById(id) {
+    return (
+      this.#list.find((item) => item.id === Number(id)) ||
+      null
+    )
   }
   static getList = () => this.#list
 }
-module.exports = {
-  Post,
-}
+module.exports = { Post }
