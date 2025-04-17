@@ -1,4 +1,4 @@
-import { Post } from "../class/post";
+import { Post } from "../../class/post";
 
 export default function handler(req, res) {
   if (req.method === "POST") {
