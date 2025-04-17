@@ -4,12 +4,12 @@ import {
   requestReducer,
   REQUEST_ACTION_TYPE,
 } from "../../util/request";
-import Grid from "../../../../component/grid";
-import Box from "../../../../component/box";
+import Grid from "../../component/grid";
+import Box from "../../component/box";
 import PostCreate from "../post-create";
 import { getDate } from "../../util/getDate";
-import PostContent from "../../../../component/post-content";
-import { Skeleton, Alert } from "../../../../component/load";
+import PostContent from "../../component/post-content";
+import { Skeleton, Alert } from "../../component/load";
 
 export default function Container({ id, username, text, date }) {
   const [state, dispatch] = useReducer(

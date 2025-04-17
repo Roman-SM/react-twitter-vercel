@@ -1,8 +1,8 @@
 import "./index.css";
-import FieldForm from "../../../../component/field-form";
-import Grid from "../../../../component/grid";
+import FieldForm from "../../component/field-form";
+import Grid from "../../component/grid";
 import { useReducer, memo, useCallback } from "react";
-import { Alert, Loader } from "../../../../component/load";
+import { Alert, Loader } from "../../component/load";
 import {
   requestInitialState,
   requestReducer,

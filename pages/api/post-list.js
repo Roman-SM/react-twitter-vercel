@@ -1,4 +1,4 @@
-const { Post } = require("../utils/post");
+const { Post } = require("../../class/post");
 
 export default function handler(req, res) {
   if (req.method !== "GET") {

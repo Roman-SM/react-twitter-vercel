@@ -6,11 +6,11 @@ import {
   useReducer,
   useCallback,
 } from "react";
-import Title from "../../../../component/title";
-import Grid from "../../../../component/grid";
-import Box from "../../../../component/box";
+import Title from "../../component/title";
+import Grid from "../../component/grid";
+import Box from "../../component/box";
 import PostCreate from "../post-create";
-import { Alert, Skeleton } from "../../../../component/load";
+import { Alert, Skeleton } from "../../component/load";
 import { getDate } from "../../util/getDate";
 import {
   requestInitialState,
