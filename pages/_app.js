@@ -1,14 +1,6 @@
-import Page from "../component/page";
-import PostList from "../container/post-list";
-import "./index.css";
-import "./normalize.css";
+import "../styles/normalize.css";
+import "../styles/index.css";
 
-function App() {
-  return (
-    <Page>
-      <PostList />
-    </Page>
-  );
+export default function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />;
 }
-
-export default App;

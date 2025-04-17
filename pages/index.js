@@ -1,9 +1,10 @@
-import dynamic from "next/dynamic";
+import PostList from "../container/post-list";
+import Page from "../component/page";
 
-const ClientOnlyApp = dynamic(() => import("./_app"), { ssr: false });
-
-const ClientOnly = () => {
-  return <ClientOnlyApp />;
-};
-
-export default ClientOnly;
+export default function HomePage() {
+  return (
+    <Page>
+      <PostList />
+    </Page>
+  );
+}
