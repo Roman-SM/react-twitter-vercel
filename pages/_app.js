@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
-import Page from "../component/page";
-import PostList from "../container/post-list";
-import "./index.css";
-import "./normalize.css";
+import dynamic from "next/dynamic";
+
+// Динамічно імпортуємо компонент з відключенням SSR
+const PostList = dynamic(() => import("../container/post-list"), {
+  ssr: false, // Відключаємо SSR для цього компонента
+});
 
 function App() {
   useEffect(() => {
