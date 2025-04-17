@@ -1,6 +1,9 @@
-import ReactDOM from "react-dom/client";
-import App from "./_app";
+import dynamic from "next/dynamic";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const ClientOnlyApp = dynamic(() => import("./_app"), { ssr: false });
 
-root.render(<App />);
+const ClientOnly = () => {
+  return <ClientOnlyApp />;
+};
+
+export default ClientOnly;

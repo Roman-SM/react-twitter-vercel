@@ -1,8 +1,7 @@
-import dynamic from "next/dynamic";
-
-const PostList = dynamic(() => import("../container/post-list"), {
-  ssr: false, // Відключаємо серверний рендеринг для цього компонента
-});
+import Page from "../component/page";
+import PostList from "../container/post-list";
+import "./index.css";
+import "./normalize.css";
 
 function App() {
   return (
