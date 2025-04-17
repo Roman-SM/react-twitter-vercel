@@ -1,4 +1,4 @@
-import "./index.css";
+import "./index.module.css";
 import { useState, memo } from "react";
 // import {useContext} from 'react'
 // import { ThemeContext } from "../../App"

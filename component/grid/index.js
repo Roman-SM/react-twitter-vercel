@@ -1,5 +1,5 @@
-import './index.css'
+import "./index.module.css";
 
-export default function Component({children}) {
-  return <div className="grid">{children}</div>
+export default function Component({ children }) {
+  return <div className="grid">{children}</div>;
 }

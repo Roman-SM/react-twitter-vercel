@@ -1,4 +1,4 @@
-import "./index.css";
+import "./index.module.css";
 import { memo } from "react";
 import Grid from "../grid";
 
