@@ -3,9 +3,11 @@ import { useState, memo } from "react";
 
 function Component({ placeholder, button, onSubmit }) {
   const [value, setValue] = useState("");
+
   const handleChange = (e) => setValue(e.target.value);
+
   const handleSubmit = () => {
-    if (value === 0) return null;
+    if (value === "") return null;
 
     if (onSubmit) {
       onSubmit(value);
@@ -15,6 +17,15 @@ function Component({ placeholder, button, onSubmit }) {
 
     setValue("");
   };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      // Перевірка на натискання клавіші Enter
+      e.preventDefault(); // Запобігаємо додатковому переходу на новий рядок у textarea
+      handleSubmit(); // Відправляємо дані, як при натисканні кнопки
+    }
+  };
+
   const isDisabled = value.length === 0;
 
   return (
@@ -25,6 +36,7 @@ function Component({ placeholder, button, onSubmit }) {
         rows={2}
         placeholder={placeholder}
         className={styles.fieldForm__field}
+        onKeyDown={handleKeyDown} // Додаємо обробник події на натискання клавіші
       ></textarea>
       <button
         disabled={isDisabled}
