@@ -1,4 +1,4 @@
-import Page from "./component/page";
+import Page from "../../component/page";
 import PostList from "./container/post-list";
 
 function App() {
