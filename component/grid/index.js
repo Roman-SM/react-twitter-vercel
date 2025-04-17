@@ -1,5 +1,5 @@
-import "./index.module.css";
+import styles from "./index.module.css";
 
 export default function Component({ children }) {
-  return <div className="grid">{children}</div>;
+  return <div className={styles.grid}>{children}</div>;
 }

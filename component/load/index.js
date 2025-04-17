@@ -1,4 +1,4 @@
-import "./index.module.css";
+import styles from "./index.module.css";
 
 export const LOAD_STATUS = {
   PROGRESS: "progress",
@@ -7,17 +7,21 @@ export const LOAD_STATUS = {
 };
 
 export function Alert({ message, status = "default" }) {
-  return <div className={`alert alert--${status}`}>{message}</div>;
+  return (
+    <div className={`${styles.alert} ${styles[`alert--${status}`]}`}>
+      {message}
+    </div>
+  );
 }
 export function Loader() {
-  return <div className="loader"></div>;
+  return <div className={styles.loader}></div>;
 }
 export function Skeleton() {
   return (
-    <div className="skeleton">
-      <div className="skeleton__item"></div>
-      <div className="skeleton__item"></div>
-      <div className="skeleton__item"></div>
+    <div className={styles.skeleton}>
+      <div className={styles.skeleton__item}></div>
+      <div className={styles.skeleton__item}></div>
+      <div className={styles.skeleton__item}></div>
     </div>
   );
 }
